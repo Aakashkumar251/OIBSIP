@@ -1,1 +1,35 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <h1>My Tasks</h1>
+
+    <div class="input-row">
+      <input type="text" id="taskInput" placeholder="What do you need to do?">
+      <button id="addBtn">Add Task</button>
+    </div>
+
+    <div class="lists">
+      <section class="list-column">
+        <h2>Pending <span id="pendingCount" class="count">0 pending</span></h2>
+        <ul id="pendingList" class="task-list"></ul>
+        <p id="pendingEmpty" class="empty-msg">No pending tasks. Add one above!</p>
+      </section>
+
+      <section class="list-column">
+        <h2>Completed <span id="completedCount" class="count">0 completed</span></h2>
+        <ul id="completedList" class="task-list"></ul>
+        <p id="completedEmpty" class="empty-msg">Nothing completed yet.</p>
+      </section>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
