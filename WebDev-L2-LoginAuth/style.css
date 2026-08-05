@@ -1,1 +1,108 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+  padding: 20px;
+}
+
+.auth-box {
+  background: #fff;
+  width: 380px;
+  max-width: 100%;
+  padding: 36px 30px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+h1 {
+  text-align: center;
+  color: #2b2b45;
+  margin-bottom: 24px;
+  font-size: 1.6rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 6px;
+  margin-top: 14px;
+}
+
+input {
+  padding: 12px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-color: #06d6a0;
+}
+
+button {
+  margin-top: 22px;
+  padding: 13px;
+  background: #06d6a0;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+
+.error {
+  color: #ef476f;
+  font-size: 0.82rem;
+  margin-top: 10px;
+  min-height: 16px;
+}
+
+.switch-link {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.switch-link a {
+  color: #06d6a0;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.dashboard-box {
+  text-align: center;
+}
+
+.welcome-msg {
+  font-size: 1.1rem;
+  color: #2b2b45;
+  margin-bottom: 8px;
+}
+
+.sub-msg {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 24px;
+}
+
+#logoutBtn {
+  background: #ef476f;
+}

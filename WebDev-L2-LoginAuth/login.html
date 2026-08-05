@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-box">
+    <h1>Welcome Back</h1>
+    <form id="loginForm" novalidate>
+      <label for="email">Email / Username</label>
+      <input type="text" id="email" placeholder="you@example.com" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Your password" required>
+
+      <p id="errorMsg" class="error"></p>
+
+      <button type="submit">Login</button>
+    </form>
+    <p class="switch-link">Don't have an account? <a href="register.html">Register here</a></p>
+  </div>
+  <script src="auth.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const errorMsg = document.getElementById('errorMsg');
+      errorMsg.textContent = '';
+
+      if (email === '' || password === '') {
+        errorMsg.textContent = 'All fields are required.';
+        return;
+      }
+
+      const users = getUsers();
+      const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+      const hashed = await hashPassword(password);
+
+      if (!user || user.password !== hashed) {
+        errorMsg.textContent = 'Invalid email or password.';
+        return;
+      }
+
+      sessionStorage.setItem('loggedInUser', email);
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+</body>
+</html>

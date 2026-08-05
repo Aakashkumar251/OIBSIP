@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-box">
+    <h1>Create Account</h1>
+    <form id="registerForm" novalidate>
+      <label for="email">Email / Username</label>
+      <input type="text" id="email" placeholder="you@example.com" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Min 8 characters, 1 number" required>
+
+      <p id="errorMsg" class="error"></p>
+
+      <button type="submit">Register</button>
+    </form>
+    <p class="switch-link">Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+  <script src="auth.js"></script>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const errorMsg = document.getElementById('errorMsg');
+      errorMsg.textContent = '';
+
+      if (email === '' || password === '') {
+        errorMsg.textContent = 'All fields are required.';
+        return;
+      }
+      if (password.length < 8 || !/\d/.test(password)) {
+        errorMsg.textContent = 'Password must be at least 8 characters and include a number.';
+        return;
+      }
+
+      const users = getUsers();
+      if (users.some(u => u.email.toLowerCase() === email.toLowerCase())) {
+        errorMsg.textContent = 'An account with this email already exists.';
+        return;
+      }
+
+      const hashed = await hashPassword(password);
+      users.push({ email, password: hashed });
+      saveUsers(users);
+
+      errorMsg.style.color = '#06d6a0';
+      errorMsg.textContent = 'Account created! Redirecting to login...';
+      setTimeout(() => window.location.href = 'login.html', 1200);
+    });
+  </script>
+</body>
+</html>
